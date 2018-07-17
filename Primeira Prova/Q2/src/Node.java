@@ -1,13 +1,13 @@
 import java.util.*;
 
-public class State {
+public class Node {
     private int station;
-    private State father;
-    private List<State> children;
+    private Node father;
+    private List<Node> children;
     private int heuristic;
     private int depth;
 
-    public State(int station, State father, List<State> children, int heuristic, int depth) {
+    public Node(int station, Node father, List<Node> children, int heuristic, int depth) {
         this.station = station;
         this.father = father;
         this.children = children;
@@ -23,19 +23,19 @@ public class State {
         this.station = station;
     }
 
-    public State getFather() {
+    public Node getFather() {
         return father;
     }
 
-    public void setFather(State father) {
+    public void setFather(Node father) {
         this.father = father;
     }
 
-    public List<State> getChildren() {
+    public List<Node> getChildren() {
         return children;
     }
 
-    public void setChildren(List<State> children) {
+    public void setChildren(List<Node> children) {
         this.children = children;
     }
 
@@ -55,13 +55,13 @@ public class State {
         this.depth = depth;
     }
 
-    public static void cDepth(State node){
-        State aux;
+    public static void cDepth(Node node){
+        Node aux;
         int cont = 0;
         boolean condition = true;
         while(condition){
             aux = node.getFather();
-            cont += //matriz[aux.getStation()][node.getStation()];
+            //cont += //matriz[aux.getStation()][node.getStation()];
             //Acessa a tabela de distancia entre pontos para pegar a diff entre o no atual e seu pai
             if(aux == null) condition = false;
         }
