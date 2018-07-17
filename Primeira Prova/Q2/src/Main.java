@@ -5,16 +5,14 @@ public class Main {
         Scanner input = new Scanner(System.in);
 
         int distance[][] = new int[14][14];
+        Util.generateMatrix(distance);
 
-        for(int i = 0; i < 14; i++){
-            for(int j = 0; j < 14; j++){
-                distance[i][j] = input.nextInt();
-            }
-        }
+        System.out.println("Estação de embarque: (Somente o numero)");
+        int in = input.nextInt();
+        System.out.println("Estação de desembarque: (Somente o numero)");
+        int out = input.nextInt();
 
-        String test = "E1";
-        if(test.contains("2")){
-            System.out.println("Ok");
-        }
+
     }
+
 }
