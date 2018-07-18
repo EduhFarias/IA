@@ -12,7 +12,7 @@ public class Node {
         this.station = station;
         this.line = line;
         this.father = father;
-        this.children = children;
+        this.children = new ArrayList<>();
         this.heuristic = heuristic;
         this.depth = depth;
     }
