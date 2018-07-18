@@ -77,4 +77,13 @@ public class Node {
         }
     }
 
+    public static Node getRoot(int in, ArrayList<Node> nodes){
+        for(Node current : nodes){
+            if(current.getStation() == in){
+                return current;
+            }
+        }
+        return null;
+    }
+
 }
