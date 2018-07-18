@@ -14,6 +14,19 @@ public class Main {
         System.out.println("Estação de desembarque: (Somente o numero)");
         int out = input.nextInt() - 1;
 
+        Node root = null;
+        try {
+            root = Node.getRoot(in, nodes);
+        } catch (NullPointerException e){
+            System.out.println("Invalido");
+            System.exit(1);
+        }
+        
+        search(root, out);
+    }
+
+    public static void search(Node root, int out){
+
     }
 
     public static int evaluation( ){
@@ -21,4 +34,6 @@ public class Main {
 
         return result;
     }
+
+
 }
