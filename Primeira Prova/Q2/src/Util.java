@@ -163,20 +163,11 @@ public class Util {
 
         newNode14.getChildren().add(newNode13);
 
-        nodes.add(newNode1);
-        nodes.add(newNode2);
-        nodes.add(newNode3);
-        nodes.add(newNode4);
-        nodes.add(newNode5);
-        nodes.add(newNode6);
-        nodes.add(newNode7);
-        nodes.add(newNode8);
-        nodes.add(newNode9);
-        nodes.add(newNode10);
-        nodes.add(newNode11);
-        nodes.add(newNode12);
-        nodes.add(newNode13);
-        nodes.add(newNode14);
+        nodes.add(newNode1); nodes.add(newNode2); nodes.add(newNode3);
+        nodes.add(newNode4); nodes.add(newNode5); nodes.add(newNode6);
+        nodes.add(newNode7); nodes.add(newNode8); nodes.add(newNode9);
+        nodes.add(newNode10); nodes.add(newNode11); nodes.add(newNode12);
+        nodes.add(newNode13); nodes.add(newNode14);
 
     }
 }
