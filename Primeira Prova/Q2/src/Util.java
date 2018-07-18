@@ -1,3 +1,4 @@
+import java.util.*;
 
 public class Util {
 
@@ -109,5 +110,73 @@ public class Util {
         distance[11][13] = distance[13][11] = 37;
 
         distance[12][13] = distance[13][12] = 5;
+    }
+
+    public static void generateNode(ArrayList<Node> nodes){
+        Node newNode1 = new Node(0, "blue", null, null, 0, 0);
+        Node newNode2 = new Node(1, "blue, yellow", null, null, 0, 0); //Colocar x ou as duas possiveis
+        Node newNode3 = new Node(2, "blue, red", null, null, 0, 0);
+        Node newNode4 = new Node(3, "blue, green", null, null, 0, 0);
+        Node newNode5 = new Node(4, "blue, yellow", null, null, 0, 0);
+        Node newNode6 = new Node(5, "blue", null, null, 0, 0);
+        Node newNode7 = new Node(6, "yellow", null, null, 0, 0);
+        Node newNode8 = new Node(7, "green, yellow", null, null, 0, 0);
+        Node newNode9 = new Node(8, "yellow, red", null, null, 0, 0);
+        Node newNode10 = new Node(9, "yellow", null, null, 0, 0);
+        Node newNode11 = new Node(10, "red", null, null, 0, 0);
+        Node newNode12 = new Node(11, "green", null, null, 0, 0);
+        Node newNode13 = new Node(12, "green, red", null, null, 0, 0);
+        Node newNode14 = new Node(13, "green", null, null, 0, 0);
+
+        newNode1.getChildren().add(newNode2);
+
+        newNode2.getChildren().add(newNode1); newNode2.getChildren().add(newNode3);
+        newNode2.getChildren().add(newNode9); newNode2.getChildren().add(newNode10);
+
+        newNode3.getChildren().add(newNode2); newNode3.getChildren().add(newNode4);
+        newNode3.getChildren().add(newNode9); newNode3.getChildren().add(newNode13);
+
+        newNode4.getChildren().add(newNode3); newNode4.getChildren().add(newNode5);
+        newNode4.getChildren().add(newNode8); newNode4.getChildren().add(newNode13);
+
+        newNode5.getChildren().add(newNode4); newNode5.getChildren().add(newNode6);
+        newNode5.getChildren().add(newNode7); newNode5.getChildren().add(newNode8);
+
+        newNode6.getChildren().add(newNode5);
+
+        newNode7.getChildren().add(newNode5);
+
+        newNode8.getChildren().add(newNode4); newNode8.getChildren().add(newNode5);
+        newNode8.getChildren().add(newNode9); newNode8.getChildren().add(newNode12);
+
+        newNode9.getChildren().add(newNode2); newNode9.getChildren().add(newNode3);
+        newNode9.getChildren().add(newNode8); newNode9.getChildren().add(newNode11);
+
+        newNode10.getChildren().add(newNode2);
+
+        newNode11.getChildren().add(newNode9);
+
+        newNode12.getChildren().add(newNode8);
+
+        newNode13.getChildren().add(newNode3); newNode13.getChildren().add(newNode4);
+        newNode13.getChildren().add(newNode14);
+
+        newNode14.getChildren().add(newNode13);
+
+        nodes.add(newNode1);
+        nodes.add(newNode2);
+        nodes.add(newNode3);
+        nodes.add(newNode4);
+        nodes.add(newNode5);
+        nodes.add(newNode6);
+        nodes.add(newNode7);
+        nodes.add(newNode8);
+        nodes.add(newNode9);
+        nodes.add(newNode10);
+        nodes.add(newNode11);
+        nodes.add(newNode12);
+        nodes.add(newNode13);
+        nodes.add(newNode14);
+
     }
 }
