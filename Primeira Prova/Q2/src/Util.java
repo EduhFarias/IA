@@ -1,8 +1,10 @@
+
 import java.util.*;
 
 public class Util {
 
-    public static void generateMatrix(int distance[][]){
+    public static int generateMatrix(int a, int b){
+        int distance[][] = new int[14][14];
         for(int i = 0; i < 14; i++){
             distance[i][i] = 0;
         }
@@ -110,6 +112,8 @@ public class Util {
         distance[11][13] = distance[13][11] = 37;
 
         distance[12][13] = distance[13][12] = 5;
+
+        return distance[a][b];
     }
 
     public static void generateNode(ArrayList<Node> nodes){
