@@ -4,8 +4,6 @@ public class Main {
     public static void main(String[] args){
         Scanner input = new Scanner(System.in);
 
-        int distance[][] = new int[14][14];
-        Util.generateMatrix(distance);
         ArrayList<Node> nodes = new ArrayList<>();
         Util.generateNode(nodes);
         ArrayList<Node> path = new ArrayList<>();
@@ -38,8 +36,12 @@ public class Main {
             double deeper = 1000000;
             Node choice = null;
             for(Node current : station.getChildren()){
-                if(depth < deeper){
+                if(Util.generateMatrix(current.getStation(), station.getStation()) < deeper){
+                    if(station.getFather() != null || !station.getFather().getLine().contains(current.getLine())){
+                        
+                    }
                     deeper = depth;
+                    current.setFather(station);
                     choice = current;
                 }
             }
@@ -53,9 +55,9 @@ public class Main {
         return h;
     }
 
-    public static int depth(int distance[][], Node root, Node station){
-        int depth = 0;
-        return depth;
+    public static double depth(Node root, Node station){
+        double test = 0;
+        return test;
     }
 
     public static double evaluation(Node current, Node goal, int distance[][], int depth){
