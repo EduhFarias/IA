@@ -24,14 +24,27 @@ public class Main {
             System.out.println("Invalido");
             System.exit(1);
         }
-        //search(root, goal, path, 0);
+        search(root, goal, path, 0);
+        for(Node current : path){
+            System.out.println("E" + current.getStation());
+        }
     }
 
     public static void search(Node station, Node goal, ArrayList<Node> path, double depth){
         if(station == goal){
+            path.add(station);
             return;
-        } else if(){
-            return;
+        } else{
+            double deeper = 1000000;
+            Node choice = null;
+            for(Node current : station.getChildren()){
+                if(depth < deeper){
+                    deeper = depth;
+                    choice = current;
+                }
+            }
+            path.add(choice);
+            search(choice, goal, path, depth);
         }
     }
 
