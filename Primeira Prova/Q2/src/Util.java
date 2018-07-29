@@ -1,4 +1,3 @@
-
 import java.util.*;
 
 public class Util {
@@ -113,24 +112,24 @@ public class Util {
 
         distance[12][13] = distance[13][12] = 5;
 
-        return distance[a][b];
+        return distance[a-1][b-1];
     }
 
     public static void generateNode(ArrayList<Node> nodes){
-        Node newNode1 = new Node(0, "blue", null, null, 0, 0);
-        Node newNode2 = new Node(1, "blue, yellow", null, null, 0, 0); //Colocar x ou as duas possiveis
-        Node newNode3 = new Node(2, "blue, red", null, null, 0, 0);
-        Node newNode4 = new Node(3, "blue, green", null, null, 0, 0);
-        Node newNode5 = new Node(4, "blue, yellow", null, null, 0, 0);
-        Node newNode6 = new Node(5, "blue", null, null, 0, 0);
-        Node newNode7 = new Node(6, "yellow", null, null, 0, 0);
-        Node newNode8 = new Node(7, "green, yellow", null, null, 0, 0);
-        Node newNode9 = new Node(8, "yellow, red", null, null, 0, 0);
-        Node newNode10 = new Node(9, "yellow", null, null, 0, 0);
-        Node newNode11 = new Node(10, "red", null, null, 0, 0);
-        Node newNode12 = new Node(11, "green", null, null, 0, 0);
-        Node newNode13 = new Node(12, "green, red", null, null, 0, 0);
-        Node newNode14 = new Node(13, "green", null, null, 0, 0);
+        Node newNode1 = new Node(1, "blue", null, null, 0, 0);
+        Node newNode2 = new Node(2, "blue, yellow", null, null, 0, 0); //Colocar x ou as duas possiveis
+        Node newNode3 = new Node(3, "blue, red", null, null, 0, 0);
+        Node newNode4 = new Node(4, "blue, green", null, null, 0, 0);
+        Node newNode5 = new Node(5, "blue, yellow", null, null, 0, 0);
+        Node newNode6 = new Node(6, "blue", null, null, 0, 0);
+        Node newNode7 = new Node(7, "yellow", null, null, 0, 0);
+        Node newNode8 = new Node(8, "green, yellow", null, null, 0, 0);
+        Node newNode9 = new Node(9, "yellow, red", null, null, 0, 0);
+        Node newNode10 = new Node(10, "yellow", null, null, 0, 0);
+        Node newNode11 = new Node(11, "red", null, null, 0, 0);
+        Node newNode12 = new Node(12, "green", null, null, 0, 0);
+        Node newNode13 = new Node(13, "green, red", null, null, 0, 0);
+        Node newNode14 = new Node(14, "green", null, null, 0, 0);
 
         newNode1.getChildren().add(newNode2);
 
