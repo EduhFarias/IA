@@ -6,6 +6,7 @@ public class Node {
     private List<Node> children;
     private int heuristic;
     private int depth;
+    boolean past = false;
 
     public Node(int station, String line, Node father, List<Node> children, int heuristic, int depth) {
         this.station = station;
