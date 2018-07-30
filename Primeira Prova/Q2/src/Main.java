@@ -22,7 +22,7 @@ public class Main {
             System.out.println("Invalido");
             System.exit(1);
         }
-
+        root.setPast(true);
         path.add(root);
         search(root, goal, path, 0);
 
@@ -37,41 +37,55 @@ public class Main {
         } else{
             double deeper = 1000000;
             Node choice = null;
-            int h = 0;
+            double evaluation;
             double total = 0;
 
+            if(station.getChildren().isEmpty()){
+                station.setPast(true);
+                depth -= heuristic(station, station.getFather());
+                station = station.getFather();
+            }
+
             for(Node current : station.getChildren()){ //loop para checar para qual filho vai
-                h = Util.generateMatrix(current.getStation(), station.getStation());
-                if(!current.equals(station.getFather())){
-                    if((h + depth) < deeper || current.equals(goal)){ //verifica se a distancia do filho ao pai é menor
+                evaluation = evaluation(current, station, goal);
+                if(!current.isPast()){
+                    if((evaluation + depth) < deeper || current.equals(goal)){ //verifica se a distancia do filho ao pai é menor
                         if(station.getFather() != null && !station.getFather().getLine().contains(current.getLine())){
                             total = 2;
                         } else total = 0;
-                        deeper = h;
+                        deeper = evaluation;
                         current.setFather(station);
                         choice = current;
                         if(current.equals(goal)) break;
                     }
                 }
             }
-            total += (h + depth);
+            choice.setPast(true);
+            total += (deeper + depth);
             path.add(choice);
             search(choice, goal, path, total);
         }
     }
 
-    public static int heuristic(int distance[][], Node station, Node goal){
-        int h = distance[station.getStation()][goal.getStation()];
+    public static int heuristic(Node station, Node goal){
+        int h = Util.generateMatrix(station.getStation(), goal.getStation());
         return h;
     }
 
-    public static double depth(Node root, Node station){
-        double test = 0;
-        return test;
+    public static double depth(Node current){
+        double total = 0;
+        while(current.getFather() != null){
+            total += heuristic(current, current.getFather());
+            current = current.getFather();
+        }
+        return total;
     }
 
-    public static double evaluation(Node current, Node goal, int distance[][], int depth){
-        int total = heuristic(distance, current, goal) + depth;
+    public static double evaluation(Node current, Node father, Node goal){
+        double total;
+        int h = heuristic(current, goal);
+        double depth = depth(current);
+        total = h + depth;
         return total/0.5;
     }
 
