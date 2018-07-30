@@ -49,6 +49,14 @@ public class Node {
         this.children = children;
     }
 
+    public boolean isPast() {
+        return past;
+    }
+
+    public void setPast(boolean past) {
+        this.past = past;
+    }
+
     public static Node getNode(int station, ArrayList<Node> nodes){
         for(Node current : nodes){
             if(current.getStation() == station){
