@@ -40,16 +40,10 @@ public class Main {
             double evaluation;
             double total = 0;
 
-            if(station.getChildren().isEmpty()){
-                station.setPast(true);
-                depth -= heuristic(station, station.getFather());
-                station = station.getFather();
-            }
-
-            for(Node current : station.getChildren()){ //loop para checar para qual filho vai
-                evaluation = evaluation(current, station, goal);
+            for(Node current : station.getChildren()){
+                evaluation = evaluation(current, goal);
                 if(!current.isPast()){
-                    if((evaluation + depth) < deeper || current.equals(goal)){ //verifica se a distancia do filho ao pai é menor
+                    if(evaluation < deeper || current.equals(goal)){
                         if(station.getFather() != null && !station.getFather().getLine().contains(current.getLine())){
                             total = 2;
                         } else total = 0;
@@ -81,12 +75,12 @@ public class Main {
         return total;
     }
 
-    public static double evaluation(Node current, Node father, Node goal){
+    public static double evaluation(Node current, Node goal){
         double total;
         int h = heuristic(current, goal);
         double depth = depth(current);
         total = h + depth;
-        return total/0.5;
+        return total;
     }
 
 
