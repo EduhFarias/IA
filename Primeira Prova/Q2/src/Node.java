@@ -4,8 +4,6 @@ public class Node {
     private String line;
     private Node father;
     private List<Node> children;
-    private int heuristic;
-    private int depth;
     boolean past = false;
 
     public Node(int station, String line, Node father, List<Node> children, int heuristic, int depth) {
@@ -13,8 +11,6 @@ public class Node {
         this.line = line;
         this.father = father;
         this.children = new ArrayList<>();
-        this.heuristic = heuristic;
-        this.depth = depth;
     }
 
     public int getStation() {
