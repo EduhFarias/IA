@@ -12,7 +12,7 @@ class Tree {
 
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
-        int i = 0, j = 1;
+        int i = 0;
         Tree newTree = new Tree();
         boolean condition = false;
 
@@ -26,6 +26,7 @@ class Tree {
                 i++;
             }
         showBoard(newTree.board);
+        generate(newTree);
 
     }
 
@@ -63,10 +64,24 @@ class Tree {
         return condition;
     }
 
-    public static void generate(){
+    public static void generate(Tree node){
+        String[][] board = new String[3][3];
+        copy(node.board, board);
         
     }
-    
+
+    public static void copy(String[][] board, String[][] copy){
+        for(int i = 0; i < 3; i++){
+            for(int j = 0; j < 3; j++){
+                copy[i][j] = board[i][j];
+            }
+        }
+    }
+
+    public static void minimax(){
+
+    }
+
     public static boolean check(String[][] board){
         if( (board[0][0].equals(board[1][1]) && board[1][1].equals(board[2][2]) && !board[1][1].equals("-")) ||
                 (board[0][2].equals(board[1][1]) && board[1][1].equals(board[2][0])) && !board[1][1].equals("-") ||
@@ -93,4 +108,3 @@ class Tree {
         System.out.println("   -----------");
     }
 }
-  
