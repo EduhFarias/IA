@@ -18,20 +18,27 @@ class Node {
         Node root = new Node();
         boolean condition = false;
 
-        while(!condition){
+        System.out.println("Escolha uma coordenada ' - ' para marcar: (linha, coluna)");
+        int line = in.nextInt();
+        int column = in.nextInt();
+        root.board[line][column] = "X";
+        generate(root);
+        /*while(!condition){
             if(i >= 1) break;
             showBoard(root.board);
             System.out.println("Escolha uma coordenada ' - ' para marcar: (linha, coluna)");
-            int line = in.nextInt();
-            int column = in.nextInt();
+            line = in.nextInt();
+            column = in.nextInt();
             //condition = mark(root, line, column);
             root.board[line][column] = "X";
-            minimax(root);
+            root.board[1][1] = "X";
+            root.board[2][1] = "0";
+            root.board[1][2] = "X";
+            root.board[1][0] = "0";
+            generate(root);
             i++;
-        }
+        }*/
         showBoard(root.board);
-        //generate(root);
-
     }
 
     public static String[][] createBoard(){
@@ -44,17 +51,17 @@ class Node {
         return board;
     }
 
-    public static boolean count(String[][] board){
+    public static int count(String[][] board){
         int count = 0;
         for(int i = 0; i < 3; i++){
             for(int j = 0; j < 3; j++){
                 if(board[i][j].equals("-")) count++;
             }
         }
-        if(count == 0) return true;
-        else return false;
+        return count;
     }
 
+    //Função para o jogo sem uma ia
     public static boolean mark(Node root, int line, int column){
         boolean condition = false;
         if(root.board[line][column].equals("-")) {
@@ -80,9 +87,29 @@ class Node {
     }
 
     public static void generate(Node node){
-        String[][] board = new String[3][3];
-        copy(node.board, board);
-
+        if(check(node.board) || count(node.board) == 0) {
+            node.evaluate = evaluation(node.board);
+            return;
+        } else {
+            for(int line = 0; line < 3; line++){
+                for(int column = 0; column < 3; column++) {
+                    if (node.board[line][column].equals("-")) {
+                        Node newNode = new Node();
+                        copy(node.board, newNode.board);
+                        if (node.max == 0) {
+                            newNode.board[line][column] = "O";
+                            newNode.max = 1;
+                        } else {
+                            newNode.board[line][column] = "X";
+                            newNode.max = 0;
+                        }
+                        node.children.add(newNode);
+                        showBoard(newNode.board);
+                        generate(newNode);
+                    }
+                }
+            }
+        }
     }
 
     public static void copy(String[][] board, String[][] copy){
@@ -93,33 +120,11 @@ class Node {
         }
     }
 
-    public static int minimax(Node node){
-        if(check(node.board) || count(node.board)){
-            return evaluation(node.board);
-        }else{
-            int max = -2;
-            for(int i = 0; i < 3; i++){
-                for(int j = 0; j < 3; j++){
-                    if(node.board[i][j].equals("-")){
-                        Node newNode = new Node();
-                        copy(node.board, newNode.board);
-                        if(node.max == 0){
-                            newNode.board[i][j] = "O";
-                            newNode.max = 1;
-                        } else {
-                            newNode.board[i][j] = "X";
-                            newNode.max = 0;
-                        }
-                        node.children.add(newNode);
+        public static void minimax(Node node){
 
-                        showBoard(newNode.board);
-                        minimax(newNode);
-                    }
-                }
-            }
         }
-    }
 
+    // Checa se o nó atual é uma solução
     public static boolean check(String[][] board){
         if( (board[0][0].equals(board[1][1]) && board[1][1].equals(board[2][2]) && !board[1][1].equals("-")) ||
                 (board[0][2].equals(board[1][1]) && board[1][1].equals(board[2][0])) && !board[1][1].equals("-") ||
@@ -134,6 +139,7 @@ class Node {
         return false;
     }
 
+    // Retorna '1' se ganhar, '0' se empatar '-1' se perder
     public static int evaluation(String[][] board){
         if( (board[0][0].equals(board[1][1]) && board[1][1].equals(board[2][2]) && !board[1][1].equals("-")) ||
                 (board[0][2].equals(board[1][1]) && board[1][1].equals(board[2][0])) && !board[1][1].equals("-") ||
