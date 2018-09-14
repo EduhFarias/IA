@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class Main {
+public class Main {     //Talvez seja melhor fazer um objeto
     public static void main(String[] args){
         ArrayList<String> strings = new ArrayList<>();
         ArrayList<ArrayList<String>> values = new ArrayList<>();
