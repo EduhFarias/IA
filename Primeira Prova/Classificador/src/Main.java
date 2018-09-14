@@ -7,13 +7,17 @@ public class Main {
         Util.accessUrl(strings);
         getValues(strings, values);
 
-        for(ArrayList<String> current : values){
+        /*for(ArrayList<String> current : values){
             for(String string : current){
                 System.out.printf("%s ", string);
             }
             System.out.println();
-        }
+        }*/
+        Collections.shuffle(values);
+
     }
+
+    
 
     public static void getValues(ArrayList<String> strings, ArrayList<ArrayList<String>> values){
         int position = 0;
@@ -35,5 +39,6 @@ public class Main {
             position++;
             j = 0;
         }
+        values.remove(150);
     }
 }
