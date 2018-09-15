@@ -4,7 +4,7 @@ import java.io.*;
 
 public class Util {
 
-    public static void accessUrl(ArrayList<String> strings){
+    public static void accessUrl(ArrayList<String> infos){
 
         HttpURLConnection connection = null;
         BufferedReader reader = null;
@@ -26,11 +26,11 @@ public class Util {
 
             while((line = reader.readLine()) != null){
                 stringBuilder.append(line + '\n');
-                strings.add(line);
+                infos.add(line);
             }
 
-            /*for(String current : strings){
-                System.out.println(current);        test
+            /*for(String current : infos){
+                System.out.println(current);
             }*/
 
             connection.disconnect();
