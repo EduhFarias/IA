@@ -1,60 +1,51 @@
 import java.util.*;
 
-public class Main {     //Talvez seja melhor fazer um objeto
-    public static void main(String[] args){
-        ArrayList<String> strings = new ArrayList<>();
-        ArrayList<ArrayList<String>> values = new ArrayList<>();
-        Util.accessUrl(strings);
-        getValues(strings, values);
+class Main {
+	ArrayList<Double> attributes = new ArrayList<>();
+	String type;
+	ArrayList<Main> neighbors = new ArrayList<>();
+	
+	public Main(ArrayList<Double> attributes, String type, ArrayList<Main> neighbors){
+		this.attributes = attributes;
+		this.type = type;
+		this.neighbors = neighbors;
+	}
 
-        /*for(ArrayList<String> current : values){
-            for(String string : current){
-                System.out.printf("%s ", string);
-            }
-            System.out.println();
-        }*/
-        Collections.shuffle(values);
-        ArrayList<String> test = new ArrayList<>();
-        test.add("5.1");
-        test.add("4.3");
-        test.add("1.2");
-        test.add("0.4");
-        distance(values, test);
+  	public static void main(String[] args) {
+		ArrayList<Main> datas = new ArrayList<>();
+		ArrayList<String> infos = new ArrayList<>();
+
+		Util.accessUrl(infos);
+		getValues(datas, infos);
+
+		for(Main current : datas){
+			System.out.printf("%.2f, %.2f, %.2f, %.2f -> %s\n", current.attributes.get(0), current.attributes.get(1), 
+							current.attributes.get(2), current.attributes.get(3), current.type);
+		}
+  }
+
+  	public static void getValues(ArrayList<Main> datas, ArrayList<String> infos){
+
+    	for(String current : infos){
+    		String aux = "";
+        	ArrayList<Double> attributes = new ArrayList<>();
+        	
+			for(int i = 0; i < current.length(); i++){
+            	if(current.charAt(i) == ','){
+                	attributes.add(Double.parseDouble(aux));
+                	aux = "";
+            	} else aux += current.charAt(i);
+        	}
+			Main newData = new Main(attributes, aux, null);
+			datas.add(newData);
+    	}
+    	datas.remove(150);
     }
 
-    public static void distance(ArrayList<ArrayList<String>> values, ArrayList<String> newObject){
-        for(ArrayList<String> current : values){
-            double distance = 0.0;
-            for(int i = 0; i < 4; i++){
-                distance += (Double.parseDouble(newObject.get(i)) - Double.parseDouble(current.get(i))) *
-                        (Double.parseDouble(newObject.get(i)) - Double.parseDouble(current.get(i)));
-            }
-            distance = Math.sqrt(distance);
-            System.out.println(distance);
-
-        }
-    }
-
-    public static void getValues(ArrayList<String> strings, ArrayList<ArrayList<String>> values){
-        int position = 0;
-        int j = 0;
-
-        for(String current : strings){
-            String aux = null;
-            ArrayList<String> test = new ArrayList<>();
-            for(int i = 0; i < current.length(); i++){
-                if(current.charAt(i) == ',' || i == current.length()-1){
-                    aux = aux.replace("null", "");
-                    test.add(j, aux);
-                    j++;
-                    aux = null;
-                } else aux += current.charAt(i);
-
-            }
-            values.add(position, test);
-            position++;
-            j = 0;
-        }
-        values.remove(150);
-    }
+	public static void distance(){
+		//Criar um novo arraylist para poder armazenar os passos, o arraylist datas serve só como
+		//um banco, aí começa a add um novo elemento retirado aleatoriamente do 'datas' e adicionando
+		//nesse novo arraylist, já vai fazendo o calculo de distancia para achar as proximidades
+		//talvez fazer o normalizador, mas ainda ver como fazer. 
+	}
 }
