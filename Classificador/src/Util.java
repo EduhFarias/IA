@@ -31,7 +31,7 @@ public class Util {
             infos.remove(150);
             
             /*for(String current : infos){
-                System.out.println(current);        //test
+                System.out.println(current);
             }*/
 
             connection.disconnect();
