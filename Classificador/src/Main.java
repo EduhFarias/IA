@@ -105,6 +105,4 @@ class Main {
             data.type = "Iris-virginica";
         } else data.type = data.realType;
     }
-
-    // acuracia = acertos/base ; taxa de erros = erros/base
 }
