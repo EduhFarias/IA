@@ -28,9 +28,10 @@ public class Util {
                 stringBuilder.append(line + '\n');
                 infos.add(line);
             }
-
+            infos.remove(150);
+            
             /*for(String current : infos){
-                System.out.println(current);
+                System.out.println(current);        //test
             }*/
 
             connection.disconnect();
